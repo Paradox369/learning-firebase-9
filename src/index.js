@@ -17,6 +17,7 @@ import {
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -129,4 +130,9 @@ loginForm.addEventListener("submit", (e) => {
       loginForm.reset();
     })
     .catch((err) => console.log(err.message));
+});
+
+// subscribingto auth state change
+onAuthStateChanged(auth, (user) => {
+  console.log("user status changed: ", user);
 });
